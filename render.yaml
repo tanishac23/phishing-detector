@@ -7,6 +7,6 @@ services:
     plan: free
     branch: main
     region: oregon
-    PYTHON_VERSION: 3.10.13
+    PYTHON_VERSION: 3.9.1
     
     
