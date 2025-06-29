@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: phishshield
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python app_phishing.py"
+    plan: free
+    branch: main
+    region: oregon
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.3
+    
