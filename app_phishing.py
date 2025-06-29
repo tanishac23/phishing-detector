@@ -4,6 +4,7 @@ import joblib
 import numpy as np
 import re
 from urllib.parse import urlparse
+import os  # ✅ For dynamic port
 
 # Step 2: Flask App and Load Models
 app = Flask(__name__)
@@ -93,11 +94,9 @@ def detect():
         input_text = request.form['input_text'].strip()
 
         if is_url(input_text):
-            # 🔧 Add protocol if missing
             if not input_text.startswith(('http://', 'https://')):
                 input_text = 'https://' + input_text
 
-            # 🧠 Check for known suspicious domains
             suspicious_domains = [
                 "rummycircle.com", "winzogames.com",
                 "ludo99.com", "loot247.net",
@@ -113,16 +112,14 @@ def detect():
                     result = phish_model.predict([features])[0]
                     prediction = "🚨 Phishing Website" if result == 1 else "✅ Legitimate Website"
         else:
-            # 📩 Email spam detection
             text_vector = vectorizer.transform([input_text])
             result = spam_model.predict(text_vector)[0]
             prediction = "🚫 Spam Email" if result == 1 else "📩 Legitimate Email"
 
     return render_template("detect.html", prediction=prediction)
 
-
-
 # Step 5: Run App
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))   # ✅ Dynamic port for Render
+    app.run(host='0.0.0.0', port=port, debug=True)  # ✅ Host set to 0.0.0.0
 
