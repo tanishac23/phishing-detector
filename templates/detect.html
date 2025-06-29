@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">🔍 Phishing & Spam Detection</h2>
+    <p class="text-center">Paste a website URL or an email message below:</p>
+    
+    <form method="POST" action="/detect">
+        <div class="form-group">
+            <textarea class="form-control" name="input_text" rows="4" placeholder="Paste a link or email here..." required></textarea>
+        </div>
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary">🚀 Detect</button>
+        </div>
+    </form>
+
+    {% if prediction %}
+    <div class="alert alert-info text-center mt-4">
+        <h4>🔎 Prediction Result:</h4>
+        <strong>{{ prediction }}</strong>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

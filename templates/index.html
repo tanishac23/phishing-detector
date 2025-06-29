@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container text-center">
+
+  <!-- Hero Section -->
+  <div class="py-5">
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="PhishShield Logo" style="width: 150px;" class="mb-3">
+    <h1 class="display-5 fw-bold text-primary">Welcome to PhishShield</h1>
+    <p class="lead">Your AI-powered defense against phishing websites and spam emails.</p>
+    <a href="{{ url_for('detect') }}" class="btn btn-primary btn-lg mt-3">🔍 Start Detecting</a>
+  </div>
+
+  <!-- Feature Highlights -->
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <h3>🔗 URL Detection</h3>
+      <p>Scan suspicious website links using 30+ intelligent features and determine if they're phishing attempts.</p>
+    </div>
+    <div class="col-md-4">
+      <h3>📧 Email Spam Classifier</h3>
+      <p>Use Natural Language Processing to detect spam and phishing emails in real-time.</p>
+    </div>
+    <div class="col-md-4">
+      <h3>⚡ Fast & Reliable</h3>
+      <p>Get instant results with user-friendly UI and seamless model integration using Flask + Machine Learning.</p>
+    </div>
+  </div>
+
+  <!-- About Callout -->
+  <div class="mt-5 p-4 bg-light rounded shadow-sm">
+    <h4 class="text-secondary">🔒 Why PhishShield?</h4>
+    <p>
+      Every day, millions of users fall victim to phishing attacks. PhishShield helps you stay a step ahead with cutting-edge AI technology — built to protect users, students, and professionals alike.
+    </p>
+    <a href="{{ url_for('about') }}" class="btn btn-outline-primary">Learn More About Us</a>
+  </div>
+
+</div>
+{% endblock %}
