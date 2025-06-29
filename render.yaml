@@ -4,9 +4,9 @@ services:
     env: python
     buildCommand: "pip install -r requirements.txt"
     startCommand: "python app_phishing.py"
-    python-version: 3.12.3
     plan: free
     branch: main
     region: oregon
+    pythonVersion: 3.12.3
     
     
